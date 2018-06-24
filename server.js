@@ -2,6 +2,7 @@ const apiRoutes = require("./routes/apiRoutes");
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -24,6 +25,8 @@ app.use("/api", apiRoutes);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
