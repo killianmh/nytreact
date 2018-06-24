@@ -20,8 +20,13 @@ class Home extends Component {
         API.fetchDBArticles()
         .then(res => {
             console.log(res)
+            //Save fetched articles to state
         })
     }
+
+    //Write a method that sends a delete request to the articles database; pass this function in as a property in the Saved Articles component below
+
+    //Write a method that sends a save request to the articles database. accept article info as arguments
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -93,6 +98,7 @@ class Home extends Component {
                 <Row>
                     <Col size="md">
                     <Results>
+                        {/* Also pass in save function as a property to save article to mongo database */}
                         {this.state.results.map(result => (
                                 <Article title={result.headline.main} date={result.pub_date} url={result.web_url}></Article>
                         ))}
@@ -102,6 +108,7 @@ class Home extends Component {
                 <Row>
                     <Col size="md">
                     <Saved>
+                        {/* For each item in this.state.results, map to an Article component passing in delete function as a property */}
                         {/* {this.state.results.map(result => (
                                 <Article title={result.headline.main} date={result.pub_date} url={result.web_url}></Article>
                         ))} */}
